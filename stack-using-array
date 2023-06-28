@@ -1,12 +1,11 @@
 #include <iostream>
-
 using namespace std;
-int arr[100], n=100, top=-1;
 
+int stack[100], n=100, top=-1;
 
 void push(int x){
     if(top<n-1){
-        arr[++top] = x;
+        stack[++top] = x;
     }
     else{
         cout<<"Stack overflow"<<endl;
@@ -18,7 +17,7 @@ void pop(){
         cout<<"Stack underflow"<<endl;
     }
     else{
-        cout<<"Element popped is: "<<arr[top--]<<endl;
+        cout<<"Element popped is: "<<stack[top--]<<endl;
     }
 }
 
@@ -26,7 +25,7 @@ void display(){
     if(top>-1){
         cout<<"Stack elements from top are: ";
         for(int i=top; i>=0; i--){
-            cout<<arr[i]<< " ";
+            cout<<stack[i]<< " ";
         }
         cout<<endl;
     }
