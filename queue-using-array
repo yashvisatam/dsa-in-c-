@@ -1,0 +1,76 @@
+#include <iostream>
+using namespace std;
+
+int queue[100], n=100, front=-1, rear=-1;
+
+void enqueue(int x){
+    if(rear>=n-1){
+        cout<<"queue overflow"<<endl;
+    }
+    else{
+        if(front<0){
+            front=0;
+        }
+        queue[++rear]=x;
+    }
+}
+
+void dequeue(){
+    if(front==-1 || front>rear){
+        cout<<"queue underflow"<<endl;
+    }
+    else{
+        cout<<"Element removed is: "<<queue[front++]<<endl;
+    }
+}
+
+void display(){
+    if(front==-1){
+        cout<<"queue empty"<<endl;
+    }
+    else{
+        cout<<"Elements in queue from front are: ";
+    for(int i=front; i<=rear;i++){
+        cout<<queue[i]<<" ";
+    }
+    cout<<endl;
+    }
+    
+}
+
+int main()
+{
+    int ch, val;
+    cout<<"1. Insert"<<endl<<"2. Remove"<<endl<<"3. Display"<<endl<<"4. Exit"<<endl;
+    do{
+        cout<<endl<<"Enter choice: ";
+        cin>>ch;
+        switch(ch){
+            case 1: {
+                cout<<"Enter value: ";
+                cin>>val;
+                enqueue(val);
+                display();
+                break;
+            }
+            case 2:{
+                dequeue();
+                display();
+                break;
+            }
+            case 3:{
+                display();
+                break;
+            }
+            case 4:{
+                cout<<"Exit"<<endl;
+                break;
+            }
+            default: {
+                cout<<"Invalid input"<<endl;
+            }
+        }
+    }while(ch!=4);
+
+    return 0;
+}
