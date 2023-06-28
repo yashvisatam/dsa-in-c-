@@ -1,0 +1,73 @@
+#include <iostream>
+
+using namespace std;
+int arr[100], n=100, top=-1;
+
+
+void push(int x){
+    if(top<n-1){
+        arr[++top] = x;
+    }
+    else{
+        cout<<"Stack overflow"<<endl;
+    }
+}
+
+void pop(){
+    if(top<0){
+        cout<<"Stack underflow"<<endl;
+    }
+    else{
+        cout<<"Element popped is: "<<arr[top--]<<endl;
+    }
+}
+
+void display(){
+    if(top>-1){
+        cout<<"Stack elements from top are: ";
+        for(int i=top; i>=0; i--){
+            cout<<arr[i]<< " ";
+        }
+        cout<<endl;
+    }
+    else{
+        cout<<"Stack is empty"<<endl;
+    }
+}
+
+int main()
+{
+    int ch, val;
+    cout<<"1. Push"<<endl<<"2. Pop"<<endl<<"3. Display"<<endl<<"4. Exit"<<endl;
+    do{
+        cout<<endl<<"Enter choice: ";
+        cin>>ch;
+        switch(ch){
+            case 1: {
+                cout<<"Enter value: ";
+                cin>>val;
+                push(val);
+                display();
+                break;
+            }
+            case 2:{
+                pop();
+                display();
+                break;
+            }
+            case 3:{
+                display();
+                break;
+            }
+            case 4:{
+                cout<<"Exit"<<endl;
+                break;
+            }
+            default: {
+                cout<<"Invalid input"<<endl;
+            }
+        }
+    }while(ch!=4);
+    
+    return 0;
+}
